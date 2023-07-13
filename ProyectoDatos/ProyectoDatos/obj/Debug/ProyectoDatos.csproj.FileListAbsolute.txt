@@ -1,0 +1,10 @@
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\bin\Debug\ProyectoDatos.exe.config
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\bin\Debug\ProyectoDatos.exe
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\bin\Debug\ProyectoDatos.pdb
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\obj\Debug\ProyectoDatos.csproj.AssemblyReference.cache
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\obj\Debug\ProyectoDatos.csproj.SuggestedBindingRedirects.cache
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\obj\Debug\ProyectoDatos.csproj.CoreCompileInputs.cache
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\obj\Debug\ProyectoDatos.exe
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\obj\Debug\ProyectoDatos.pdb
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\bin\Debug\DBEstudiantes.mdf
+C:\Users\piero\source\repos\ProyectoDatos\ProyectoDatos\bin\Debug\DBEstudiantes_log.ldf

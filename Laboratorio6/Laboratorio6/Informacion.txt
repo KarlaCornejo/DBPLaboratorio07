@@ -1,0 +1,8 @@
+Nombre: Karla
+Apellidos: Cornejo
+Sexo: F
+Correo: kcornejo@unsa.edu.pe
+Dirección: Calle Ideal
+Ciudad: Arequipa
+Descripción: Se fue la luz
+----------------------------------

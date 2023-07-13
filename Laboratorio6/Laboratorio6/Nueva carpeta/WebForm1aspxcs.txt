@@ -1,0 +1,121 @@
+﻿using AplicacionWebParaDBP.ServiceReference1;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace AplicacionWebParaDBP
+{
+    public partial class WebForm1 : System.Web.UI.Page
+    {
+        protected void Page_Load(object sender, EventArgs e)
+        {
+            if (!IsPostBack)
+            {
+                addDropDownCiudadItem();
+                // Lógica para cargar los datos iniciales, si es necesario
+            }
+        }
+
+        protected void ButtonEnviar_Click(object sender, EventArgs e)
+        {
+            // Lógica para manejar el evento ButtonEnviar_Click
+            string nombre = this.nombre.Text;
+            string apellidos = this.apellidos.Text;
+            string sexo = string.Empty;
+            if (this.sexo.SelectedValue == "M")
+            {
+                sexo = "Masculino";
+            }
+            else if (this.sexo.SelectedValue == "F")
+            {
+                sexo = "Femenino";
+            }
+            string correo = this.correo.Text;
+            string direccion = this.direccion.Text;
+            string ciudad = this.ciudadDropdown.SelectedValue;
+            string descripcion = this.descripcion.Text;
+
+            // Mostrar los valores recibidos en el contenedor
+            this.lblNombre.InnerText = nombre;
+            this.lblApellidos.InnerText = apellidos;
+            this.lblSexo.InnerText = sexo;
+            this.lblCorreo.InnerText = correo;
+            this.lblDireccion.InnerText = direccion;
+            this.lblCiudad.InnerText = ciudad;
+            this.lblDescripcion.InnerText = descripcion;
+
+            // Mostrar el contenedor con los valores recibidos
+            this.resultContainer.Visible = true;
+
+            // Llamar a la función para guardar la información
+            GuardarInformacion(nombre, apellidos, sexo, correo, direccion, ciudad, descripcion);
+
+            // Limpiar los campos del formulario
+            LimpiarCampos();
+        }
+
+        private void LimpiarCampos()
+        {
+            this.nombre.Text = string.Empty;
+            this.apellidos.Text = string.Empty;
+            this.sexo.SelectedValue = string.Empty;
+            this.correo.Text = string.Empty;
+            this.direccion.Text = string.Empty;
+            this.ciudadDropdown.SelectedValue = string.Empty;
+            this.descripcion.Text = string.Empty;
+        }
+
+        private void GuardarInformacion(string nombre, string apellidos, string sexo, string correo, string direccion, string ciudad, string descripcion)
+        {
+            // Crear el cliente del servicio
+            Service1Client client = new Service1Client();
+
+            try
+            {
+                // Llamar al método del servicio para guardar la información
+                client.GuardarInformacion(nombre, apellidos, sexo, correo, direccion, ciudad, descripcion);
+            }
+            finally
+            {
+                // Cerrar el cliente del servicio en caso de excepción
+                if (client.State == System.ServiceModel.CommunicationState.Faulted)
+                {
+                    client.Abort();
+                }
+                else
+                {
+                    client.Close();
+                }
+            }
+        }
+
+        private String[] serviceCall()
+        {
+            Service1Client client = new Service1Client();
+            String[] ciudades = client.getCiudades();
+
+            return ciudades;
+
+        }
+
+        protected void addDropDownCiudadItem()
+        {
+            String[] ciudades = serviceCall();
+
+            Array.Sort(ciudades);
+            ciudadDropdown.Items.Add("Selecciona una opcion");
+
+            for (int i = 0; i < ciudades.Length; i++)
+            {
+                string s = ciudades[i];
+                ciudadDropdown.Items.Add(s);
+            }
+        }
+
+
+
+    }
+}

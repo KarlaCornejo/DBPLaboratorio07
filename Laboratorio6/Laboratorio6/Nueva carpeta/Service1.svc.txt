@@ -1,0 +1,44 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.ServiceModel;
+using System.Text;
+using System.Web;
+
+namespace Laboratorio6
+{
+    // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de clase "Service1" en el código, en svc y en el archivo de configuración a la vez.
+    // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione Service1.svc o Service1.svc.cs en el Explorador de soluciones e inicie la depuración.
+    public class Service1 : IService1
+    {
+        public IList<String> getCiudades()
+        {
+            IList<String> ciudades = new List<String>();
+            ciudades.Add("Arequipa");
+            ciudades.Add("Lima");
+            ciudades.Add("Tacna");
+            return ciudades;
+        }
+        public void GuardarInformacion(string nombre, string apellidos, string sexo, string correo, string direccion, string ciudad, string descripcion)
+        {
+            // Ruta del archivo de texto para almacenar la información
+            string rutaArchivo = HttpContext.Current.Server.MapPath("~/Informacion.txt");
+
+            // Crear o abrir el archivo en modo de escritura
+            using (StreamWriter writer = new StreamWriter(rutaArchivo, true))
+            {
+                // Escribir la información en el archivo
+                writer.WriteLine($"Nombre: {nombre}");
+                writer.WriteLine($"Apellidos: {apellidos}");
+                writer.WriteLine($"Sexo: {sexo}");
+                writer.WriteLine($"Correo: {correo}");
+                writer.WriteLine($"Dirección: {direccion}");
+                writer.WriteLine($"Ciudad: {ciudad}");
+                writer.WriteLine($"Descripción: {descripcion}");
+                writer.WriteLine("----------------------------------");
+            }
+        }
+    }
+}
