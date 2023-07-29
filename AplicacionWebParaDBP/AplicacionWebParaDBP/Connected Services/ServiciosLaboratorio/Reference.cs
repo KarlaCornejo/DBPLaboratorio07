@@ -32,6 +32,18 @@ namespace AplicacionWebParaDBP.ServiciosLaboratorio {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GetCiudades_SQL", ReplyAction="http://tempuri.org/IService1/GetCiudades_SQLResponse")]
         System.Threading.Tasks.Task<string[]> GetCiudades_SQLAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GuardarInformacionSimpleSQL", ReplyAction="http://tempuri.org/IService1/GuardarInformacionSimpleSQLResponse")]
+        bool GuardarInformacionSimpleSQL(string nombre, string apellidos, string sexo, string correo, string direccion, int codeCiudad, string descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GuardarInformacionSimpleSQL", ReplyAction="http://tempuri.org/IService1/GuardarInformacionSimpleSQLResponse")]
+        System.Threading.Tasks.Task<bool> GuardarInformacionSimpleSQLAsync(string nombre, string apellidos, string sexo, string correo, string direccion, int codeCiudad, string descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GuardarInformacionVerificandoSQL", ReplyAction="http://tempuri.org/IService1/GuardarInformacionVerificandoSQLResponse")]
+        bool GuardarInformacionVerificandoSQL(string nombre, string apellidos, string sexo, string email, string direccion, int codeCiudad, string descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/GuardarInformacionVerificandoSQL", ReplyAction="http://tempuri.org/IService1/GuardarInformacionVerificandoSQLResponse")]
+        System.Threading.Tasks.Task<bool> GuardarInformacionVerificandoSQLAsync(string nombre, string apellidos, string sexo, string email, string direccion, int codeCiudad, string descripcion);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +95,22 @@ namespace AplicacionWebParaDBP.ServiciosLaboratorio {
         
         public System.Threading.Tasks.Task<string[]> GetCiudades_SQLAsync() {
             return base.Channel.GetCiudades_SQLAsync();
+        }
+        
+        public bool GuardarInformacionSimpleSQL(string nombre, string apellidos, string sexo, string correo, string direccion, int codeCiudad, string descripcion) {
+            return base.Channel.GuardarInformacionSimpleSQL(nombre, apellidos, sexo, correo, direccion, codeCiudad, descripcion);
+        }
+        
+        public System.Threading.Tasks.Task<bool> GuardarInformacionSimpleSQLAsync(string nombre, string apellidos, string sexo, string correo, string direccion, int codeCiudad, string descripcion) {
+            return base.Channel.GuardarInformacionSimpleSQLAsync(nombre, apellidos, sexo, correo, direccion, codeCiudad, descripcion);
+        }
+        
+        public bool GuardarInformacionVerificandoSQL(string nombre, string apellidos, string sexo, string email, string direccion, int codeCiudad, string descripcion) {
+            return base.Channel.GuardarInformacionVerificandoSQL(nombre, apellidos, sexo, email, direccion, codeCiudad, descripcion);
+        }
+        
+        public System.Threading.Tasks.Task<bool> GuardarInformacionVerificandoSQLAsync(string nombre, string apellidos, string sexo, string email, string direccion, int codeCiudad, string descripcion) {
+            return base.Channel.GuardarInformacionVerificandoSQLAsync(nombre, apellidos, sexo, email, direccion, codeCiudad, descripcion);
         }
     }
 }

@@ -96,13 +96,13 @@ namespace AplicacionWebParaDBP
         protected global::System.Web.UI.WebControls.Button ButtonEnviar;
 
         /// <summary>
-        /// Control serverSuccessMessage.
+        /// Control Span1.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl serverSuccessMessage;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Span1;
 
         /// <summary>
         /// Control resultContainer.
@@ -175,5 +175,14 @@ namespace AplicacionWebParaDBP
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl lblDescripcion;
+
+        /// <summary>
+        /// Control alertMessage.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal alertMessage;
     }
 }

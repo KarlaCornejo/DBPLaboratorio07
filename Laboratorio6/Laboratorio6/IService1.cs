@@ -18,5 +18,12 @@ namespace Laboratorio6
 
         [OperationContract]
         IList<String> GetCiudades_SQL();
+
+
+        [OperationContract]
+        bool GuardarInformacionSimpleSQL(string nombre, string apellidos, string sexo, string correo, string direccion, int codeCiudad, string descripcion);
+        
+        [OperationContract]
+        bool GuardarInformacionVerificandoSQL(string nombre, string apellidos, string sexo, string email, string direccion, int codeCiudad, string descripcion);
     }
 }

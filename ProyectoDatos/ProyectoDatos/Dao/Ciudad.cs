@@ -11,7 +11,7 @@ namespace ProyectoDatos.Dao
 
         public IList<string> Query()
         {
-            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\\DBEstudiantes.mdf;Integrated Security=True;Connect Timeout=30";
+            string connectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Initial Catalog=DBKarla;Integrated Security=True;Connect Timeout=30";
             string query = "SELECT Ciudad FROM [dbo].Ciudad;";
             Console.WriteLine(query);
             using (SqlConnection connection = new SqlConnection(connectionString))

@@ -10,6 +10,8 @@ namespace ProyectoDatos
         {
             DBConeccion conn = new DBConeccion();
             conn.query();
+            DatoAlumnos program = new DatoAlumnos();
+            program.InsertarRegistro("Karla", "López", "cornejo","Femenino",2,"HolaMundo");
         }
 
         private void query()

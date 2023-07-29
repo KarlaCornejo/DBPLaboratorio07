@@ -3,6 +3,7 @@ using ProyectoDatos.Dao;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.ServiceModel;
 using System.Web;
 
 namespace Laboratorio6
@@ -38,6 +39,47 @@ namespace Laboratorio6
                 writer.WriteLine($"Ciudad: {ciudad}");
                 writer.WriteLine($"Descripción: {descripcion}");
                 writer.WriteLine("----------------------------------");
+            }
+        }
+
+        public bool GuardarInformacionSimpleSQL(string nombre, string apellidos, string sexo, string email, string direccion, int codeCiudad, string descripcion)
+        {
+            DatoAlumnos data = new DatoAlumnos();
+            try
+            {
+                data.InsertarRegistro(nombre, apellidos, email, sexo, codeCiudad, descripcion);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Registrar la excepción para trazabilidad o análisis.
+                // ...
+
+                // Lanzar una excepción personalizada utilizando el contrato de servicio.
+                return false;
+            }
+        }
+
+        public bool GuardarInformacionVerificandoSQL(string nombre, string apellidos, string sexo, string email, string direccion, int codeCiudad, string descripcion)
+        {
+            DatoAlumnos data = new DatoAlumnos();
+            if (data.RegistroExiste(nombre,apellidos))
+            {
+                return false;
+            }
+
+            try
+            {
+                data.InsertarRegistro(nombre, apellidos, email, sexo, codeCiudad, descripcion);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                // Registrar la excepción para trazabilidad o análisis.
+                // ...
+
+                // Lanzar una excepción personalizada utilizando el contrato de servicio.
+                return false;
             }
         }
     }

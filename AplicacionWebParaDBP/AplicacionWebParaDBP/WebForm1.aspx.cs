@@ -36,7 +36,8 @@ namespace AplicacionWebParaDBP
             }
             string correo = this.correo.Text;
             string direccion = this.direccion.Text;
-            string ciudad = this.ciudadDropdown.SelectedValue;
+            int ciudad = this.ciudadDropdown.SelectedIndex;
+            string ciudad2 = this.ciudadDropdown.SelectedValue;
             string descripcion = this.descripcion.Text;
 
             // Mostrar los valores recibidos en el contenedor
@@ -45,14 +46,27 @@ namespace AplicacionWebParaDBP
             this.lblSexo.InnerText = sexo;
             this.lblCorreo.InnerText = correo;
             this.lblDireccion.InnerText = direccion;
-            this.lblCiudad.InnerText = ciudad;
+            this.lblCiudad.InnerText = ciudad2;
             this.lblDescripcion.InnerText = descripcion;
 
             // Mostrar el contenedor con los valores recibidos
             this.resultContainer.Visible = true;
 
             // Llamar a la función para guardar la información
-            GuardarInformacion(nombre, apellidos, sexo, correo, direccion, ciudad, descripcion);
+            if (GuardarInformacion(nombre, apellidos, sexo, correo, direccion, ciudad, descripcion))
+            {
+                // Si el registro es exitoso, muestra la alerta de "correcto"
+                string script = "mostrarAlerta(true);";
+                ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", script, true);
+                
+            }
+            else
+            {
+                // Si ocurre un error al guardar, muestra la alerta de "error"
+                string script = "mostrarAlerta(false);";
+                ClientScript.RegisterStartupScript(this.GetType(), "CallMyFunction", script, true);
+            }
+            ;
 
             // Limpiar los campos del formulario
             LimpiarCampos();
@@ -65,11 +79,10 @@ namespace AplicacionWebParaDBP
             this.sexo.SelectedValue = string.Empty;
             this.correo.Text = string.Empty;
             this.direccion.Text = string.Empty;
-            this.ciudadDropdown.SelectedValue = string.Empty;
             this.descripcion.Text = string.Empty;
         }
 
-        private void GuardarInformacion(string nombre, string apellidos, string sexo, string correo, string direccion, string ciudad, string descripcion)
+        private bool GuardarInformacion(string nombre, string apellidos, string sexo, string correo, string direccion, int ciudad, string descripcion)
         {
             // Crear el cliente del servicio
             Service1Client client = new Service1Client();
@@ -77,7 +90,14 @@ namespace AplicacionWebParaDBP
             try
             {
                 // Llamar al método del servicio para guardar la información
-                //client.GuardarInformacion(nombre, apellidos, sexo, correo, direccion, ciudad, descripcion);
+                if (client.GuardarInformacionVerificandoSQL(nombre, apellidos, sexo, correo, direccion, ciudad, descripcion))
+                {
+                    return true;
+                }
+                else { 
+                    return false; 
+                }
+
             }
             finally
             {
